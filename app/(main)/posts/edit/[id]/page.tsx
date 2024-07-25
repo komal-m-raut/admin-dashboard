@@ -11,6 +11,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import posts from "@/data/posts";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -94,7 +95,7 @@ const PostsEditPage = ({ params }: PostsEditPageProps) => {
                   Body
                 </FormLabel>
                 <FormControl>
-                  <Input
+                  <Textarea
                     className="bg-slate-100 dark:bg-slate-500 border-0 focus-visible:ring-0 text-black dark:text-white focus-visible:ring-offset-0"
                     placeholder="Enter Body"
                     {...field}
