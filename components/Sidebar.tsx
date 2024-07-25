@@ -1,16 +1,5 @@
 import React from "react";
 import {
-  Command,
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-  CommandShortcut,
-} from "@/components/ui/command";
-import {
   CreditCard,
   Folders,
   LayoutDashboard,
@@ -19,26 +8,42 @@ import {
   User,
 } from "lucide-react";
 import Link from "next/link";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
+} from "./ui/command";
 
 const Sidebar = () => {
   return (
-    <Command className="bg-secondary">
+    <Command className="bg-secondary rounded-none">
       <CommandInput placeholder="Type a command or search..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Suggestions">
-          <CommandItem>
-            <LayoutDashboard className="mr-2 h-4 w-4" />
-            <Link href="/">Dashboard</Link>
-          </CommandItem>
-          <CommandItem>
-            <Newspaper className="mr-2 h-4 w-4" />
-            <Link href="/posts">Posts</Link>
-          </CommandItem>
-          <CommandItem>
-            <Folders className="mr-2 h-4 w-4" />
-            <Link href="#">Categories</Link>
-          </CommandItem>
+          <Link href="/" passHref>
+            <CommandItem>
+              <LayoutDashboard className="mr-2 h-4 w-4" />
+              <span>Dashboard</span>
+            </CommandItem>
+          </Link>
+          <Link href="/posts" passHref>
+            <CommandItem>
+              <Newspaper className="mr-2 h-4 w-4" />
+              <span>Posts</span>
+            </CommandItem>
+          </Link>
+          <Link href="#" passHref>
+            <CommandItem>
+              <Folders className="mr-2 h-4 w-4" />
+              <span>Categories</span>
+            </CommandItem>
+          </Link>
         </CommandGroup>
         <CommandSeparator />
         <CommandGroup heading="Settings">
