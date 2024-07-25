@@ -11,6 +11,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/components/ui/use-toast";
 import posts from "@/data/posts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
@@ -38,6 +39,8 @@ interface PostsEditPageProps {
   };
 }
 const PostsEditPage = ({ params }: PostsEditPageProps) => {
+  const { toast } = useToast();
+
   const post = posts.find((post) => post.id === params.id);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -50,7 +53,12 @@ const PostsEditPage = ({ params }: PostsEditPageProps) => {
     },
   });
 
-  const handleSubmit = (data: z.infer<typeof formSchema>) => {};
+  const handleSubmit = (data: z.infer<typeof formSchema>) => {
+    toast({
+      title: "Post Updated",
+      description: `Updated by ${data.author} on ${data.date}`,
+    });
+  };
   return (
     <>
       <BackButton text="Go Back to Posts" link={"/posts"} />
